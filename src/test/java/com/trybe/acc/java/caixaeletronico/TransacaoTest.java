@@ -19,7 +19,7 @@ class TransacaoTest {
     Transacao transacao = new Transacao(42, "saque");
 
     assertEquals(42, transacao.getQuantia());
-    assertEquals("saque", transacao.getDescricao());
+    assertEquals("saque", transacao.descricao);
   }
 
 
@@ -34,7 +34,8 @@ class TransacaoTest {
   @DisplayName("3 - Testa o método retornar resumo transação.")
   void retornarResumoTransacaoTest() {
     Transacao transacao = new Transacao(42, "saque");
-    assertEquals("2023-10-03, 42, saque", transacao.retornarResumoTransacao());
+    String result = String.format("%s, 42, saque", transacao.retornarInstante());
+    assertEquals(result, transacao.retornarResumoTransacao());
 
   }
 
@@ -45,7 +46,7 @@ class TransacaoTest {
     DateTimeFormatter instanteFormater = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     LocalDateTime instante = LocalDateTime.now();
 
-    assertEquals(instante, transacao.retornarInstante());
+    assertEquals(instanteFormater.format(instante), transacao.retornarInstante());
 
   }
 
