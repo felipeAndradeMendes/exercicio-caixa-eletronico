@@ -1,6 +1,11 @@
 package com.trybe.acc.java.caixaeletronico;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,29 +16,36 @@ class TransacaoTest {
   @Test
   @DisplayName("1 - Testa o método construtor da classe Transação.")
   void construtorTest() {
-    fail("Não implementado");
+    Transacao transacao = new Transacao(42, "saque");
 
+    assertEquals(42, transacao.getQuantia());
+    assertEquals("saque", transacao.getDescricao());
   }
 
 
   @Test
   @DisplayName("2 - Testa o método Getter do atributo quantia.")
   void getQuantiaTest() {
-    fail("Não implementado");
-
+    Transacao transacao = new Transacao(42, "saque");
+    assertEquals(42, transacao.getQuantia());
   }
 
   @Test
   @DisplayName("3 - Testa o método retornar resumo transação.")
   void retornarResumoTransacaoTest() {
-    fail("Não implementado");
+    Transacao transacao = new Transacao(42, "saque");
+    assertEquals("2023-10-03, 42, saque", transacao.retornarResumoTransacao());
 
   }
 
   @Test
   @DisplayName("4 - Testa o método instante está gerando o instante corretamente.")
   void retornarInstanteTest() {
-    fail("Não implementado");
+    Transacao transacao = new Transacao(42, "saque");
+    DateTimeFormatter instanteFormater = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    LocalDateTime instante = LocalDateTime.now();
+
+    assertEquals(instante, transacao.retornarInstante());
 
   }
 
